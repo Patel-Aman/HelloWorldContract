@@ -1,14 +1,14 @@
 {
   "name": "helloworld",
   "version": "1.0.0",
-  "description": "",
+  "description": "Hello World web page for updating message of smart contract",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Aman Patel",
+  "license": "MIT",
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^2.0.0",
     "@nomiclabs/hardhat-ethers": "^2.2.1",
