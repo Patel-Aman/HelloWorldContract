@@ -21,7 +21,7 @@ async function main() {
 
     console.log("updating message...");
 
-    const tx = await HelloWorldContract.updateMsg("Next steps");
+    const tx = await HelloWorldContract.updateMsg("Check smartContractTracking 4!!!");
     await tx.wait();
     message = await HelloWorldContract.message();
 

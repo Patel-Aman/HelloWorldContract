@@ -16,24 +16,72 @@ const HelloWorld = () => {
   const [newMessage, setNewMessage] = useState("");
 
   //called only once
-  useEffect(async () => {
+  useEffect(() => {
     
+    const fecthMsg = async () => {
+      const currentMsg = await loadCurrentMessage();
+      setMessage(currentMsg);
+    };
+
+    fecthMsg();
+    addSmartContractListener();
+
+    const fetchWallet = async () => {
+      const { address, status } = await getCurrentWalletConnected();
+      setWallet(address);
+      setStatus(status);
+    };
+
+    fetchWallet();
+    addWalletListener();
   }, []);
 
-  function addSmartContractListener() { //TODO: implement
-    
+  function addSmartContractListener() {
+    helloWorldContract.events.update({}, (error, data) => {
+      if(error) {
+        setStatus("😥 " + error.message);
+      }
+      else {
+        setStatus("🎉 Your message has been updated!");
+        setMessage(data.returnValues[1]);
+      }
+    });
   }
 
-  function addWalletListener() { //TODO: implement
-    
+  async function addWalletListener() {
+    if(window.ethereum) {
+      window.ethereum.on("accountsChanged", (accounts) => {
+        setWallet(accounts[0]);
+      })
+    }
+    else {
+      return ({
+          address: "",
+          status: (
+              <span>
+                <p>
+                  {" "}
+                  🦊{" "}
+                  <a target="_blank" href={`https://metamask.io/download`}>
+                    You must install Metamask, a virtual Ethereum wallet, in your
+                    browser.
+                  </a>
+                </p>
+              </span>
+            )
+      });
+    }
   }
 
-  const connectWalletPressed = async () => { //TODO: implement
-    
+  const connectWalletPressed = async () => {
+    const { address, status } = await connectWallet();
+    setWallet(address);
+    setStatus(status);
   };
 
-  const onUpdatePressed = async () => { //TODO: implement
-    
+  const onUpdatePressed = async () => {
+    const { status } = await updateMessage(walletAddress, newMessage);
+    setStatus(status);
   };
 
   //the UI of our component
