@@ -44,6 +44,7 @@ const HelloWorld = () => {
       else {
         setStatus("🎉 Your message has been updated!");
         setMessage(data.returnValues[1]);
+        setNewMessage("");
       }
     });
   }
