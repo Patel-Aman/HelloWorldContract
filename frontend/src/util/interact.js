@@ -1,3 +1,7 @@
+
+require('dotenv').config();
+
+
 //export const helloWorldContract;
 
 export const loadCurrentMessage = async () => { 

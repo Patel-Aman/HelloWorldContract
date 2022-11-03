@@ -1,0 +1,29 @@
+"error": "😥 "
+"success": "🎉 Your message has been updated!"
+"normal": "👆🏽 Write a message in the text-field above."
+"install": (
+        <span>
+          <p>
+            {" "}
+            🦊{" "}
+            <a target="_blank" href={`https://metamask.io/download`}>
+              You must install Metamask, a virtual Ethereum wallet, in your
+              browser.
+            </a>
+          </p>
+        </span>
+      )
+"connect": "🦊 Connect to Metamask using the top right button."
+"connectWallet": "💡 Connect your Metamask wallet to update the message on the blockchain."
+"MsgErr": "❌ Your message cannot be an empty string."
+"complete": (
+        <span>
+          ✅{" "}
+          <a target="_blank" href={`https://goerli.etherscan.io/tx/${txHash}`}>
+            View the status of your transaction on Etherscan!
+          </a>
+          <br />
+          ℹ️ Once the transaction is verified by the network, the message will
+          be updated automatically.
+        </span>
+      )
